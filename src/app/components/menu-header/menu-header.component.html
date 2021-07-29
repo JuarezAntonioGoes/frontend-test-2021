@@ -1,7 +1,23 @@
-<hr />
-<p>Aqui é o topo do menu!</p>
-<p>Menu minimizado? {{ minimize }}</p>
+<!-- <p>Menu minimizado? {{ minimize }}</p> -->
+
 <span class="material-icons" (click)="handleClick()">menu</span>
-{{ user?.name }}
-{{ user?.role }}
-<hr />
+
+<img src="assets/svg/logo.svg" class="logo-header" />
+
+<div class="container-user">
+    <div class="circle-perfil">
+        {{abreviationName(user?.name || '')}}
+    </div>
+
+    <div class="info-user">
+        <p>{{ user?.name }}</p>
+        <p>{{ user?.role }}</p>
+    </div>    
+</div>
+
+<button class="btn-add-list"> 
+    <img src="assets/svg/check.svg" /> 
+    ADICIONAR LISTA
+</button>
+
+<hr class="line" />

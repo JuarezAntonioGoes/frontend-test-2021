@@ -25,4 +25,17 @@ export class MenuHeaderComponent {
   handleClick() {
     this.toggle.emit();
   }
+
+  abreviationName(name: string):string {
+    const arrayName = this.user?.name.split(' ') || [];
+    let abreviation = '';
+
+    if(arrayName.length >= 2){
+      abreviation = arrayName[0][0] +  arrayName[1][0];
+    }else{
+      abreviation = arrayName[0][0];
+    }
+
+    return abreviation;
+  }
 }
