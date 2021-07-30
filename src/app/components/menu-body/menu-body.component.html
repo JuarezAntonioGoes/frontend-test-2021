@@ -4,10 +4,19 @@
     <div
       *ngIf="link.isVisible && link.parentId === null"
       class="links"
-      [ngClass]="{ active: link?.isActive, 'link-disabled': !link?.isEnabled }"
+      [ngClass]="{
+        active: link?.isActive,
+        'link-disabled': !link?.isEnabled,
+        'active-drop': showParentsId.includes(link.id)
+      }"
       (click)="showDropOurNext(link.id)"
     >
-      <span *ngIf="link?.icon" class="material-icons">{{ link.icon }}</span>
+      <span
+        *ngIf="link?.icon"
+        class="material-icons"
+        [ngClass]="{ drop: showParentsId.includes(link.id) }"
+        >{{ link.icon }}</span
+      >
 
       {{ link.text }}
 
@@ -15,7 +24,7 @@
         src="assets/svg/drop.svg"
         *ngIf="verifyParents(link.id) && link?.isEnabled"
         class="drop-ico"
-        [ngClass]="{ 'active-drop': showParentsId.includes(link.id) }"
+        [ngClass]="{ 'active-drop-ico': showParentsId.includes(link.id) }"
       />
 
       <span *ngIf="!link?.isEnabled" class="material-icons lock"> lock </span>
@@ -23,7 +32,11 @@
 
     <ng-container *ngFor="let child of links">
       <div
-        *ngIf="child.parentId === link.id && showParentsId.includes(link.id) && !minimize"
+        *ngIf="
+          child.parentId === link.id &&
+          showParentsId.includes(link.id) &&
+          !minimize
+        "
         class="container-parents"
         [ngClass]="{ 'link-disabled': !child?.isEnabled }"
       >

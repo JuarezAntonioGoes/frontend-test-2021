@@ -9,6 +9,7 @@
 
   display: flex;
   align-items: center;
+  transition: background-color .3s;
 
   span {
     color: #15b35a;
@@ -33,11 +34,11 @@
 }
 
 .container-links {
-  height: calc(100% - 3.3125rem);
+  height: calc(100vh - 15.3125rem);
   overflow-y: overlay;
+  overflow-x: hidden;
 
   padding-top: 1.875rem;
-  padding-bottom: 9.3125rem;
 
   &::-webkit-scrollbar {
     width: 0px;
@@ -73,8 +74,12 @@
   }
 }
 
-.active-drop {
+.active-drop-ico {
   transform: rotate(180deg);
+}
+
+.active-drop {
+  background-color: #DDE8E1;
 }
 
 .link-disabled{
