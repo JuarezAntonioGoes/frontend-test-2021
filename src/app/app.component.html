@@ -1,21 +1,25 @@
 <!-- app-content -->
 <div class="application" [class.application--menu-minimized]="menuMinimized">
+  
   <!-- painel lateral -->
-  <div class="application__aside">
+  <aside class="application__aside" [ngClass]="{ 'menu-hide': menuMinimized}">
     <ft-menu-header
       [user]="user"
       [minimize]="menuMinimized"
       (toggle)="handleMenuToggle()"
     ></ft-menu-header>
+
     <ft-menu-body [links]="menuLinks" [minimize]="menuMinimized"></ft-menu-body>
+    
     <ft-menu-footer
       [buttons]="menuFooterButtons"
       [minimize]="menuMinimized"
     ></ft-menu-footer>
-  </div>
+  </aside>
   <!-- painel lateral end -->
+
   <!-- container principal -->
-  <div class="application__main">Aqui é o conteúdo principal!</div>
+  <div class="application__main" [ngClass]="{'resize-main' :!menuMinimized}">Aqui é o conteúdo principal!</div>
   <!-- container principal end -->
 </div>
 <!-- app-content end -->
