@@ -32,7 +32,7 @@
         "text": "Página inicial"
       },
       {
-        "isEnabled": true,
+        "isEnabled": false,
         "icon": "check",
         "id": 2,
         "parentId": null,
