@@ -1,0 +1,39 @@
+.footer-sidebar{
+    width: 16.5rem;
+    height: 3.3125rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+
+    background-color: #F2F9F2;
+    border-top: 0.0625rem solid rgba(0, 0, 0, 0.1);
+    transition: transform .5s;
+
+    &>div{
+        margin-right: 2.125rem;
+        cursor: pointer;
+        span{
+            color: #616461;
+            transition: color .3s ease-in-out;
+        }
+
+        &:last-child{
+            margin-right: 0;
+        }
+
+        &:hover{
+            span{
+                color: #616461b3;
+            }
+        }
+    }
+
+    &.minimized{
+        transform: translateX(-190px);
+    }
+}

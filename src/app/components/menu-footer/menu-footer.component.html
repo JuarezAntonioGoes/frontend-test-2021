@@ -1,9 +1,7 @@
-<hr />
-<p>Aqui é o rodapé do menu</p>
-<p>Menu minimizado? {{ minimize }}</p>
-<div *ngFor="let button of buttons">
-  <span class="material-icons">
-    {{ button.icon }}
-  </span>
-</div>
-<hr />
+<footer class="footer-sidebar" [ngClass]="{ minimized: minimize }">
+  <div *ngFor="let button of buttons">
+    <span class="material-icons">
+      {{ button.icon }}
+    </span>
+  </div>
+</footer>
