@@ -1,23 +1,24 @@
-<!-- <p>Menu minimizado? {{ minimize }}</p> -->
+<header>
+  <div class="container-logo">
+    <span class="material-icons" (click)="handleClick()">menu</span>
+    <img src="assets/svg/logo.svg" class="logo-header" />
+  </div>
 
-<span class="material-icons" (click)="handleClick()">menu</span>
-
-<img src="assets/svg/logo.svg" class="logo-header" />
-
-<div class="container-user">
+  <div class="container-user">
     <div class="circle-perfil">
-        {{abreviationName(user?.name || '')}}
+      {{ abreviationName(user?.name || "") }}
     </div>
 
     <div class="info-user">
-        <p>{{ user?.name }}</p>
-        <p>{{ user?.role }}</p>
-    </div>    
-</div>
+      <p>{{ user?.name }}</p>
+      <p>{{ user?.role }}</p>
+    </div>
+  </div>
 
-<button class="btn-add-list"> 
-    <img src="assets/svg/check.svg" /> 
-    ADICIONAR LISTA
-</button>
+  <button class="btn-add-list" [ngClass]="{ minimized: minimize }">
+    <img src="assets/svg/check.svg" />
+    <span>ADICIONAR LISTA</span>
+  </button>
 
-<hr class="line" />
+  <hr class="line" />
+</header>

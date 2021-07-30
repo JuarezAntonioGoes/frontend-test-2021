@@ -27,7 +27,7 @@ export class MenuHeaderComponent {
   }
 
   abreviationName(name: string):string {
-    const arrayName = this.user?.name.split(' ') || [];
+    const arrayName = name.split(' ') || [];
     let abreviation = '';
 
     if(arrayName.length >= 2){
