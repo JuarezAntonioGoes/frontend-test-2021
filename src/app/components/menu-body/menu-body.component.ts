@@ -26,7 +26,35 @@ export class MenuBodyComponent implements OnInit {
   @Input() minimize = false;
   @Input() links: MenuLink[] = [];
 
+  showParentsId: Number[] = [];
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  verifyParents(id: number): boolean {
+    const foundParent = this.links.find(({ parentId }) => id === parentId);
+
+    if (foundParent) {
+      return true;
+    }
+
+    return false;
+  }
+
+  showDropOurNext(id: number) {
+    const foundParent = this.verifyParents(id);
+
+    if (!foundParent) {
+      return;
+    }
+
+    const isShow = this.showParentsId.includes(id);
+
+    if (!isShow) {
+      this.showParentsId.push(id);
+    } else {
+      this.showParentsId = this.showParentsId.filter((parent) => parent !== id);
+    }
+  }
 }

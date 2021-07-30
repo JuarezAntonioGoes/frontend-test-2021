@@ -1,15 +1,39 @@
-<!-- <p>Aqui é a lista de links!</p>
-<p>Menu minimizado? {{ minimize }}</p> -->
-
 <!-- laço com os links recebidos -->
-<div *ngFor="let link of links" class="container-links"  [ngClass]="{active: link.isActive}">
-  <span *ngIf="link.icon" class="material-icons">{{ link.icon }}</span>
+<div class="container-links">
+  <ng-container *ngFor="let link of links">
+    <div
+      *ngIf="link.isVisible && link.parentId === null"
+      class="links"
+      [ngClass]="{ active: link?.isActive, 'link-disabled': !link?.isEnabled }"
+      (click)="showDropOurNext(link.id)"
+    >
+      <span *ngIf="link?.icon" class="material-icons">{{ link.icon }}</span>
 
-  {{ link.text }}
+      {{ link.text }}
 
-  <div *ngFor="let child of link.children" >
-    {{ link.text }}
-  </div>
+      <img
+        src="assets/svg/drop.svg"
+        *ngIf="verifyParents(link.id) && link?.isEnabled"
+        class="drop-ico"
+        [ngClass]="{ 'active-drop': showParentsId.includes(link.id) }"
+      />
+
+      <span *ngIf="!link?.isEnabled" class="material-icons lock"> lock </span>
+    </div>
+
+    <ng-container *ngFor="let child of links">
+      <div
+        *ngIf="child.parentId === link.id && showParentsId.includes(link.id) && !minimize"
+        class="container-parents"
+        [ngClass]="{ 'link-disabled': !child?.isEnabled }"
+      >
+        {{ child.text }}
+
+        <span *ngIf="!child?.isEnabled" class="material-icons lock">
+          lock
+        </span>
+      </div>
+    </ng-container>
+  </ng-container>
 </div>
 <!-- laço com os links recebidos end -->
-<hr />
